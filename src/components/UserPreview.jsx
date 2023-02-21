@@ -16,7 +16,7 @@ function UserPreview(props)
     return (
         <Card class="card" key={props.id}  style={{"width": "18rem"}}>
             <div>
-                <h5>{props.userName}</h5>
+                <h4>{props.userName}</h4>
                 <h6>{props.personalID}</h6>
                 <div style={{"display": "flex"}}>
                     <Link to="/"> {/*TODO: create user's books view */}

@@ -11,9 +11,9 @@ function BookPreview(props)
     return (
         <Card class="card" key={props.id}  style={{"width": "18rem"}}>
             <div>
-                <h5>{props.bookName}</h5>
-                <h6>{props.author}</h6>
-                <h6>{props.numOfAvailableCopies}</h6>
+                <h4>{props.bookName}</h4>
+                <h6>Author: {props.author}</h6>
+                <h6>Available Copies: {props.numOfAvailableCopies}</h6>
                 <div style={{"display": "flex"}}>
                     <Link to="/"> {/*TODO: create [who currently loans the book] page*/}
                         <Tooltip title="Loaners">
