@@ -8,16 +8,18 @@ import { Card, Tooltip } from "@mui/material";
 
 function UserPreview(props)
 {
+    const {id, userName, personalID} = props;
+    var edit_path = "/edit_user/" + userName + "/" + personalID;
     function deletePopUp()
     {
         alert("User is deleted");
     }
 
     return (
-        <Card class="card" key={props.id}  style={{"width": "18rem"}}>
+        <Card class="card" key={id}  style={{"width": "18rem"}}>
             <div>
-                <h4>{props.userName}</h4>
-                <h6>{props.personalID}</h6>
+                <h4>{userName}</h4>
+                <h6>{personalID}</h6>
                 <div style={{"display": "flex"}}>
                     <Link to="/"> {/*TODO: create user's books view */}
                         <Tooltip title="My Books">
@@ -26,7 +28,7 @@ function UserPreview(props)
                             </IconButton>
                         </Tooltip>
                     </Link>
-                    <Link to="/"> {/*TODO: create edit */}
+                    <Link to={edit_path}> {/*TODO: create edit */}
                         <Tooltip title="Edit">
                             <IconButton color="primary" aria-label="edit user">
                                 <EditIcon />

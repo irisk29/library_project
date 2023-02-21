@@ -1,16 +1,13 @@
 import React, { useState } from "react";
-import { Link } from "react-router-dom";
-import IconButton from '@mui/material/IconButton';
-import HomeIcon from '@mui/icons-material/Home';
-import { Tooltip } from "@mui/material";
+import SimpleHeader from "./SimpleHeader";
 
-function AddNewUser()
-{
-    var [newUser, setNewUser] = useState({"fullName": "", "personalID": ""});
+function AddOrEditUser(props)
+{   
+    var [newUser, setNewUser] = useState({"fullName": props.name, "personalID": props.pID});
 
     function handleSubmit(event)
     {
-        //TODO: should save the user in the db
+        //TODO: should save the user in the db (incase of edit it should update and not create)
         event.preventDefault();
         alert("saved user in db");
         setNewUser({"fullName": "", "personalID": ""});
@@ -24,8 +21,9 @@ function AddNewUser()
 
     return (
         <div>
+            {props.name === "" ? <SimpleHeader title="Create New User" /> : null} {/*the cond means this is add mode*/}
             <div>
-                <form onSubmit={handleSubmit}>
+                <form inline onSubmit={handleSubmit}>
                     <label>Enter your full name:
                         <input 
                         type="text" 
@@ -45,19 +43,8 @@ function AddNewUser()
                     <input type="submit" />
                 </form>
             </div>
-            <div>
-                <Link to="/">
-                    <Tooltip title="Home">
-                        <IconButton color="primary" size="large" aria-label="go back home">
-                            <HomeIcon />
-                        </IconButton>
-                    </Tooltip>
-                </Link>
-            </div>
         </div>
-        
-        
     );
 }
 
-export default AddNewUser;
+export default AddOrEditUser;
