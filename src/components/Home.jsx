@@ -1,21 +1,10 @@
 import React from "react";
-import { Link } from "react-router-dom";
 import ButtonBases from "./HomeButton";
 
 function Home(){
    return (
     <div>
-        <h1>Hello, this is my library app</h1> 
-        <Link to="/users">
-          <button variant="outlined">
-            Manage Users
-          </button>
-        </Link>
-        <Link to="/books">
-          <button variant="outlined">
-            Manage Books
-          </button>
-        </Link>
+        <h1 style={{"display": "flex", "marginLeft": "40%", "marginTop": "10%", "fontWeight": "800", "fontSize": "300%"}}>My Library</h1> 
         <ButtonBases />
     </div>
    )

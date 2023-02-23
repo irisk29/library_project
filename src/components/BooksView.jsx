@@ -9,8 +9,8 @@ function BooksView(props)
             {
                 props.books.map((b, index) => {
                     return (
-                        <Grid item>
-                            <BookPreview bookName={b.bookName} author={b.author} numOfAvailableCopies={b.copies} id={index}/>
+                        <Grid item key={index}>
+                            <BookPreview bookName={b["BookName"]} author={b["Author"]} numOfAvailableCopies={b["Copies"]} id={b["ID"]}/>
                         </Grid>)
                 })
             }

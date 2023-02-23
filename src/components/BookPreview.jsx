@@ -29,7 +29,7 @@ function BookPreview(props)
                             </IconButton>
                         </Tooltip>
                     </Link>
-                    <Link to="/books">
+                    <Link to="/books"> {/*TODO: add loan book logic*/}
                         <Tooltip title="Loan Book">
                             <IconButton color="primary" aria-label="loan book">
                                 <AddCircleIcon />

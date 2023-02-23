@@ -1,42 +1,25 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import BooksHeader from "./BooksHeader";
 import BooksView from "./BooksView";
-
-const booksInfo = [
-   {
-      "author" : "Kronfeld",
-      "bookName" : "Iris",
-      "copies": "4"
-   },
-   {
-      "author" : "Kronfeld",
-      "bookName" : "Dana",
-      "copies": "2"
-   },
-   ,
-   {
-      "author" : "Kronfeld",
-      "bookName" : "Annabelle",
-      "copies": "6"
-   },
-   {
-      "author" : "Kronfeld",
-      "bookName" : "Tanya",
-      "copies": "1"
-   },
-   ,
-   {
-      "author" : "Kronfeld",
-      "bookName" : "Alex",
-      "copies": "5"
-   }
-];
+import ServerCommunicator from "../ServerCommunicator";
 
 function ManageBooks() {
+   const [booksInfo, setBooksInfo] = useState([]);
+
+   useEffect( () =>{
+      async function getBooks(){
+         var res = await new ServerCommunicator().getAllBooks();
+         console.log(res);
+         setBooksInfo(res);
+      }
+      getBooks();
+   }, []);
+
+   //<BooksView books={booksInfo} />
    return (
     <div>
       <BooksHeader />
-      <BooksView books={booksInfo} />
+      {typeof booksInfo === 'string' ? booksInfo : <BooksView books={booksInfo} />}      
     </div>
    )
 }
