@@ -8,8 +8,9 @@ function AddOrEditUser(props)
 {   
     var [newUser, setNewUser] = useState({"fullName": props.name, "personalID": props.pID});
 
-    function handleSubmit(event)
+    async function handleSubmit(event)
     {
+        await props.userHandle(newUser.fullName, newUser.personalID);
         //TODO: should save the user in the db (incase of edit it should update and not create)
         //event.preventDefault(); --> prevents navigation
         alert("saved user in db");
@@ -29,7 +30,6 @@ function AddOrEditUser(props)
     }
     return (
         <div>
-            {props.name === "" ? <SimpleHeader title="Create New User" /> : null} {/*the cond means this is add mode*/}
             <div className="div-form">
                 <Form>
                     <FormGroup controlId="formUserName">
@@ -43,7 +43,7 @@ function AddOrEditUser(props)
                     <FormGroup>
                     {checkInputs() ? 
                             <Link to="/users">
-                                <Button type="submit" onClick={handleSubmit} variant="contained" size="small" style={{"backgroundColor": colors.amber[500]}}>Submit</Button>
+                                <Button type="submit" onClick={async (event) => await handleSubmit(event)} variant="contained" size="small" style={{"backgroundColor": colors.amber[500]}}>Submit</Button>
                             </Link>
                          : <h6>Please enter full name and/or ID</h6>}
                          

@@ -8,7 +8,7 @@ function ManageBooks() {
 
    useEffect( () =>{
       async function getBooks(){
-         var res = await new ServerCommunicator().getAllBooks();
+         var res = await new ServerCommunicator().getAllBooks().catch(() => "Something went wrong!");
          console.log(res);
          setBooksInfo(res);
       }

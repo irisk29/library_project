@@ -21,6 +21,17 @@ class ServerCommunicator{
         }
         return JSON.parse(res_json["body"]);
     }
+
+    async createNewUser(userName, personalID) {
+      const res = await axios.post(`http://localhost:8000/create_user/${userName}/${personalID}`);
+      console.log(res);
+      var res_json = JSON.parse(res.data);
+      console.log(res_json["body"]);
+      if(res.status !== 200){
+          throw Error(res.data["body"]["message"]);
+      }
+      return "ok";
+  }
 }
 
 export default ServerCommunicator;

@@ -34,3 +34,18 @@ async def getAllBooks():
     print(url)
     req = requests.request("GET", url, headers=headers)
     return req.text
+
+
+@app.post("/create_user/{userName}/{personalID}")
+async def createNewUser(userName, personalID):
+    input_data = {
+        "userName": userName,
+        "personalID": personalID
+    }
+    json_data = json.dumps(input_data)
+    print(json_data)
+    resource_name = "create_new_user"
+    url = f"{api_gateway_endpoint}/{resource_name}"
+    print(url)
+    req = requests.post(url, headers=headers, data=json_data)
+    return req.text

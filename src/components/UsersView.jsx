@@ -9,7 +9,7 @@ function UsersView(props)
             {
                 props.users.map((u, index) => {
                     return (
-                        <Grid item>
+                        <Grid item key={index}>
                             <UserPreview userName={u.userName} personalID={u.personalID} id={index}/>
                         </Grid>)
                 })
