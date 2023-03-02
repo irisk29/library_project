@@ -2,7 +2,6 @@ import { Button, colors } from "@mui/material";
 import React, { useState } from "react";
 import { Form, FormControl, FormGroup } from "react-bootstrap";
 import { Link } from "react-router-dom";
-import SimpleHeader from "./SimpleHeader";
 
 function AddOrEditUser(props)
 {   
@@ -10,11 +9,10 @@ function AddOrEditUser(props)
 
     async function handleSubmit(event)
     {
-        await props.userHandle(newUser.fullName, newUser.personalID);
-        //TODO: should save the user in the db (incase of edit it should update and not create)
+        //length === 0 means this is create mode because the user does not have userID upon creation
+        props.userID.length === 0 ? await props.userHandle(newUser.fullName, newUser.personalID) :
+                                    await props.userHandle(newUser.fullName, newUser.personalID, props.userID);
         //event.preventDefault(); --> prevents navigation
-        alert("saved user in db");
-        //setNewUser({"fullName": "", "personalID": ""});
     }
 
     function handleChange(event)
@@ -28,6 +26,7 @@ function AddOrEditUser(props)
         if(newUser.fullName.length === 0 || newUser.personalID.length === 0) return false;
         return true;
     }
+
     return (
         <div>
             <div className="div-form">

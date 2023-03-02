@@ -13,7 +13,7 @@ function CreateUser()
     return (
         <div>
             <SimpleHeader title="Create New User" />
-            <AddOrEditUser name="" pID="" userHandle={createUser}/>
+            <AddOrEditUser name="" pID="" userID="" userHandle={createUser}/>
         </div>
         
     )

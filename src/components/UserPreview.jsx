@@ -9,7 +9,7 @@ import { Card, Tooltip } from "@mui/material";
 function UserPreview(props)
 {
     const {id, userName, personalID} = props;
-    var edit_path = "/edit_user/" + userName + "/" + personalID;
+    var edit_path = "/edit_user/" + userName + "/" + personalID + "/" + id;
     function deletePopUp()
     {
         alert("User is deleted");

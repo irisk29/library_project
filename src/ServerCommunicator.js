@@ -21,24 +21,33 @@ class ServerCommunicator{
         return JSON.parse(res_json["body"]);
     }
 
+    async post(...params) {
+      var url = `http://localhost:8000/`;
+      url += params.join("/");
+      const res = await axios.post(url);
+      var res_json = JSON.parse(res.data);
+      console.log(`inside post func for url - ${url} the body is: ${res_json["body"]}`);
+      if(res.status !== 200){
+          throw Error(res.data["body"]["message"]);
+      }
+      return "ok";
+    }
+
     async getAllBooks() {
         return await this.get("get_all_books");
     }
 
     async getAllUsers() {
       return await this.get("get_all_users");
-  }
+    }
 
     async createNewUser(userName, personalID) {
-      const res = await axios.post(`http://localhost:8000/create_user/${userName}/${personalID}`);
-      console.log(res);
-      var res_json = JSON.parse(res.data);
-      console.log(res_json["body"]);
-      if(res.status !== 200){
-          throw Error(res.data["body"]["message"]);
-      }
-      return "ok";
-  }
+      return await this.post("create_user", userName, personalID);
+    }
+
+    async editUser(userID, userName, personalID) {
+      return await this.post("edit_user", userID, userName, personalID);
+    }
 }
 
 export default ServerCommunicator;

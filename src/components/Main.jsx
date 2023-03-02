@@ -1,12 +1,11 @@
 import React from 'react';
 import { Routes ,Route } from 'react-router-dom';
 import CreateUser from './CreateUser';
-import AddOrEditUser from './EditOrAddUserForm';
 import EditUser from './EditUser';
-
-import Home from "./Home"
+import Home from "./Home";
 import ManageBooks from './ManageBooks';
-import ManageUsers from "./ManageUsers"
+import ManageUsers from "./ManageUsers";
+
 const Main = () => {
   return (
     <Routes> {/* The Switch decides which component to show based on the current URL.*/}
@@ -14,7 +13,7 @@ const Main = () => {
       <Route exact path='/books' element={<ManageBooks/>}></Route>
       <Route exact path='/users' element={<ManageUsers/>}></Route>
       <Route exact path='/add_new_user' element={<CreateUser/>}></Route>
-      <Route exact path='/edit_user/:userName/:personalID' element={<EditUser/>}></Route>
+      <Route exact path='/edit_user/:userName/:personalID/:userID' element={<EditUser/>}></Route>
     </Routes>
   );
 }

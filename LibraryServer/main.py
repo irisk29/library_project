@@ -57,3 +57,18 @@ async def createNewUser(userName, personalID):
     print(url)
     req = requests.post(url, headers=headers, data=json_data)
     return req.text
+
+
+@app.post("/edit_user/{userID}/{userName}/{personalID}")
+async def editUser(userID, userName, personalID):
+    input_data = {
+        "userID": userID,
+        "userName": userName,
+        "personalID": personalID
+    }
+    json_data = json.dumps(input_data)
+    resource_name = "edit_user"
+    url = f"{api_gateway_endpoint}/{resource_name}"
+    print(url)
+    req = requests.post(url, headers=headers, data=json_data)
+    return req.text
