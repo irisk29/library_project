@@ -11,16 +11,23 @@ class ServerCommunicator{
       ServerCommunicator._instance = this;
     }
     
-    async getAllBooks() {
-        const res = await axios.get('http://localhost:8000/get_all_books');
-        console.log(res);
+    async get(resource) {
+      const res = await axios.get(`http://localhost:8000/${resource}`);
         var res_json = JSON.parse(res.data);
-        console.log(res_json["body"]);
+        console.log(`inside get func for resource - ${resource} the body is: ${res_json["body"]}`);
         if(res.status !== 200){
             throw Error(res.data["body"]["message"]);
         }
         return JSON.parse(res_json["body"]);
     }
+
+    async getAllBooks() {
+        return await this.get("get_all_books");
+    }
+
+    async getAllUsers() {
+      return await this.get("get_all_users");
+  }
 
     async createNewUser(userName, personalID) {
       const res = await axios.post(`http://localhost:8000/create_user/${userName}/${personalID}`);

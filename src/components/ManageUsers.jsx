@@ -1,31 +1,20 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import UsersHeader from "./UsersHeader";
 import UsersView from "./UsersView";
-
-const usersInfo = [
-   {
-      "personalID" : 1,
-      "userName" : "Iris Kronfeld"
-   },
-   {
-      "personalID" : 2,
-      "userName" : "Dana Kronfeld"
-   },
-   {
-      "personalID" : 3,
-      "userName" : "Annabelle Kronfeld"
-   },
-   {
-      "personalID" : 4,
-      "userName" : "Tanya Kronfeld"
-   },
-   {
-      "personalID" : 5,
-      "userName" : "Alex Kronfeld"
-   }
-];
+import ServerCommunicator from "../ServerCommunicator";
 
 function ManageUsers() {
+   const [usersInfo, setUsersInfo] = useState([]);
+
+   useEffect( () =>{
+      async function getUsers(){
+         var res = await new ServerCommunicator().getAllUsers().catch(() => "Something went wrong!");
+         console.log(res);
+         setUsersInfo(res);
+      }
+      getUsers();
+   }, []);
+
    return (
     <div>
       <UsersHeader />

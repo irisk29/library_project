@@ -32,7 +32,16 @@ async def getAllBooks():
     resource_name = "get_all_books"
     url = f"{api_gateway_endpoint}/{resource_name}"
     print(url)
-    req = requests.request("GET", url, headers=headers)
+    req = requests.get(url, headers=headers)
+    return req.text
+
+
+@app.get("/get_all_users")
+async def getAllUsers():
+    resource_name = "get_all_users"
+    url = f"{api_gateway_endpoint}/{resource_name}"
+    print(url)
+    req = requests.get(url, headers=headers)
     return req.text
 
 
@@ -43,7 +52,6 @@ async def createNewUser(userName, personalID):
         "personalID": personalID
     }
     json_data = json.dumps(input_data)
-    print(json_data)
     resource_name = "create_new_user"
     url = f"{api_gateway_endpoint}/{resource_name}"
     print(url)

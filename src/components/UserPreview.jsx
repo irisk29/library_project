@@ -35,7 +35,7 @@ function UserPreview(props)
                             </IconButton>
                         </Tooltip>
                     </Link>
-                    <Link to="/">
+                    <Link to="/"> {/*TODO: create delete */}
                         <Tooltip title="Delete">
                             <IconButton color="primary" aria-label="delete user" onClick={deletePopUp}>
                                 <DeleteIcon />
