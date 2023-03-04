@@ -9,7 +9,7 @@ function UsersHeader()
 {
     return (
         <header>
-            <h1 style={{"display": 'inline-block'}}>User Managment</h1>
+            <h1 style={{"display": 'inline-block'}}>Users Managment</h1>
             <div style={{"textAlign": 'right', "position": "absolute", "top": "2vh", "right": "1vw"}}>
                 <Link to="/add_new_user">
                     <Tooltip title="Create User">

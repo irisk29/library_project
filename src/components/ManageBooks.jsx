@@ -9,13 +9,11 @@ function ManageBooks() {
    useEffect( () =>{
       async function getBooks(){
          var res = await new ServerCommunicator().getAllBooks().catch(() => "Something went wrong!");
-         console.log(res);
          setBooksInfo(res);
       }
       getBooks();
    }, []);
 
-   //<BooksView books={booksInfo} />
    return (
     <div>
       <BooksHeader />

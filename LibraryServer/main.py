@@ -72,3 +72,18 @@ async def editUser(userID, userName, personalID):
     print(url)
     req = requests.post(url, headers=headers, data=json_data)
     return req.text
+
+
+@app.post("/edit_book/{bookID}/{bookName}/{author}/{copies}")
+async def editBook(bookID, bookName, author, copies):
+    input_data = {
+        "bookID": bookID,
+        "bookName": bookName,
+        "author": author,
+        "copies": copies
+    }
+    json_data = json.dumps(input_data)
+    resource_name = "edit_book"
+    url = f"{api_gateway_endpoint}/{resource_name}"
+    req = requests.post(url, headers=headers, data=json_data)
+    return req.text

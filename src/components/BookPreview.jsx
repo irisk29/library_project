@@ -8,6 +8,9 @@ import { Card, Tooltip } from "@mui/material";
 
 function BookPreview(props)
 {
+    const vars = [props.bookName, props.author, props.numOfAvailableCopies, props.id];
+    const edit_book_path = "/edit_book/" + vars.join("/");
+    
     return (
         <Card class="card" key={props.id}  style={{"width": "18rem"}}>
             <div>
@@ -22,7 +25,7 @@ function BookPreview(props)
                             </IconButton>
                         </Tooltip>
                     </Link>
-                    <Link to="/"> {/*TODO: create edit book*/}
+                    <Link to={edit_book_path}>
                         <Tooltip title="Edit Book">
                             <IconButton color="primary" aria-label="edit book">
                                 <EditIcon />

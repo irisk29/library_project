@@ -1,6 +1,7 @@
 import React from 'react';
 import { Routes ,Route } from 'react-router-dom';
 import CreateUser from './CreateUser';
+import EditBook from './EditBook';
 import EditUser from './EditUser';
 import Home from "./Home";
 import ManageBooks from './ManageBooks';
@@ -14,6 +15,7 @@ const Main = () => {
       <Route exact path='/users' element={<ManageUsers/>}></Route>
       <Route exact path='/add_new_user' element={<CreateUser/>}></Route>
       <Route exact path='/edit_user/:userName/:personalID/:userID' element={<EditUser/>}></Route>
+      <Route exact path='/edit_book/:bookName/:author/:copies/:bookID' element={<EditBook/>}></Route>
     </Routes>
   );
 }

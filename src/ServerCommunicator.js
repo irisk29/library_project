@@ -48,6 +48,10 @@ class ServerCommunicator{
     async editUser(userID, userName, personalID) {
       return await this.post("edit_user", userID, userName, personalID);
     }
+
+    async editBook(bookID, bookName, author, numOfCopies) {
+      return await this.post("edit_book", bookID, bookName, author, numOfCopies);
+    }
 }
 
 export default ServerCommunicator;
