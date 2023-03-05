@@ -21,7 +21,7 @@ function LoanBookCard(props) {
                     <h6>Available Copies: {props.numOfAvailableCopies}</h6>
                 </div>
                 <div style={{"display": "flex", "float": "right", "width": "20%", "justifyContent": "flex-end", "marginTop": "2%"}}>
-                    <Link to="/" style={cannotNav ? {"pointerEvents" : "none"} : null}>
+                    <Link to="/users" style={cannotNav ? {"pointerEvents" : "none"} : null}>
                         <Tooltip title="Loan Book">
                             <IconButton color="primary" aria-label="view books" disabled={cannotNav} onClick={loanBook}>
                                 <AddShoppingCartIcon />

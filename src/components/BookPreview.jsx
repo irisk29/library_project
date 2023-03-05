@@ -10,6 +10,7 @@ function BookPreview(props)
 {
     const vars = [props.bookName, props.author, props.numOfAvailableCopies, props.id];
     const edit_book_path = "/edit_book/" + vars.join("/");
+    const loaners_path = "/loaners/" + props.id;
 
     return (
         <Card className="card" key={props.id}  style={{"width": "18rem"}}>
@@ -18,7 +19,7 @@ function BookPreview(props)
                 <h6>Author: {props.author}</h6>
                 <h6>Available Copies: {props.numOfAvailableCopies}</h6>
                 <div style={{"display": "flex"}}>
-                    <Link to="/"> {/*TODO: create [who currently loans the book] page*/}
+                    <Link to={loaners_path}> 
                         <Tooltip title="Loaners">
                             <IconButton color="primary" aria-label="view books">
                                 <VisibilityIcon />

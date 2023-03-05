@@ -15,19 +15,18 @@ class ServerCommunicator{
     var url = `http://localhost:8000/`;
     url += params.join("/");
     const res = await axios.get(url);
-      var res_json = JSON.parse(res.data);
-      console.log(`inside get func for url - ${url} the body is: ${res_json["body"]}`);
-      if(res.status !== 200){
-          throw Error(res.data["body"]["message"]);
-      }
-      return JSON.parse(res_json["body"]);
+    var res_json = JSON.parse(res.data);
+    console.log(`inside post func for url - ${url} the body is: ${res.data}`);
+    if(res.status !== 200){
+        throw Error(res.data["body"]["message"]);
+    }
+    return JSON.parse(res_json["body"]);
   }
 
   async post(...params) {
     var url = `http://localhost:8000/`;
     url += params.join("/");
     const res = await axios.post(url);
-    var res_json = JSON.parse(res.data);
     console.log(`inside post func for url - ${url} the body is: ${res.data}`);
     if(res.status !== 200){
         throw Error(res.data["body"]["message"]);
@@ -49,6 +48,10 @@ class ServerCommunicator{
 
   async getBooksUserCanLoan(userID) {
     return await this.get("get_books_user_can_loan", userID);
+  }
+
+  async getUsersWhoLoansTheBook(bookID) {
+    return await this.get("get_book_loaners", bookID);
   }
 
   async createNewUser(userName, personalID) {

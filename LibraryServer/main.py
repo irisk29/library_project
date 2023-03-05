@@ -31,7 +31,6 @@ headers = {"Content-type": "application/json"}
 async def getAllBooks():
     resource_name = "get_all_books"
     url = f"{api_gateway_endpoint}/{resource_name}"
-    print(url)
     req = requests.get(url, headers=headers)
     return req.text
 
@@ -40,7 +39,6 @@ async def getAllBooks():
 async def getAllUsers():
     resource_name = "get_all_users"
     url = f"{api_gateway_endpoint}/{resource_name}"
-    print(url)
     req = requests.get(url, headers=headers)
     return req.text
 
@@ -54,7 +52,6 @@ async def createNewUser(userName, personalID):
     json_data = json.dumps(input_data)
     resource_name = "create_new_user"
     url = f"{api_gateway_endpoint}/{resource_name}"
-    print(url)
     req = requests.post(url, headers=headers, data=json_data)
     return req.text
 
@@ -69,7 +66,6 @@ async def editUser(userID, userName, personalID):
     json_data = json.dumps(input_data)
     resource_name = "edit_user"
     url = f"{api_gateway_endpoint}/{resource_name}"
-    print(url)
     req = requests.post(url, headers=headers, data=json_data)
     return req.text
 
@@ -97,7 +93,6 @@ async def getUserBooks(userID):
     json_data = json.dumps(input_data)
     resource_name = "get_user_books"
     url = f"{api_gateway_endpoint}/{resource_name}"
-    print(url)
     req = requests.get(url, headers=headers, data=json_data)
     return req.text
 
@@ -110,7 +105,6 @@ async def getBooksUserCanLoan(userID):
     json_data = json.dumps(input_data)
     resource_name = "get_books_user_can_loan"
     url = f"{api_gateway_endpoint}/{resource_name}"
-    print(url)
     req = requests.get(url, headers=headers, data=json_data)
     return req.text
 
@@ -134,9 +128,20 @@ async def endLoan(bookID, userID):
         "bookID": bookID,
         "userID": userID,
     }
-    print(input_data)
     json_data = json.dumps(input_data)
     resource_name = "end_loan"
     url = f"{api_gateway_endpoint}/{resource_name}"
     req = requests.post(url, headers=headers, data=json_data)
+    return req.text
+
+
+@app.get("/get_book_loaners/{bookID}")
+async def getUsersWhoLoansTheBooks(bookID):
+    input_data = {
+        "bookID": bookID,
+    }
+    json_data = json.dumps(input_data)
+    resource_name = "get_loaners"
+    url = f"{api_gateway_endpoint}/{resource_name}"
+    req = requests.get(url, headers=headers, data=json_data)
     return req.text

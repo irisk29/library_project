@@ -2,7 +2,6 @@ import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import ServerCommunicator from "../ServerCommunicator";
 import LoanBookCard from "./LoanBookCard";
-import MyBooksHeader from "./MyBooksHeader";
 import { Grid } from "@mui/material";
 import SimpleHeader from "./SimpleHeader";
 

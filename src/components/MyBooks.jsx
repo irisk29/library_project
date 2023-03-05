@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { Card, Tooltip} from "@mui/material";
+import { Card } from "@mui/material";
 import ServerCommunicator from "../ServerCommunicator";
 import { useParams } from "react-router-dom";
 import CurrentlyLoaningBookCard from "./CurrentlyLoaningBookCard";

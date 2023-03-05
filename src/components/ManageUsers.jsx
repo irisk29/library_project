@@ -12,7 +12,6 @@ function ManageUsers() {
             console.log("Somthing went wrong!");
             return [];
          });
-         console.log(res);
          setUsersInfo(res);
       }
       getUsers();
