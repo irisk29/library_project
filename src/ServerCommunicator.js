@@ -28,7 +28,7 @@ class ServerCommunicator{
     url += params.join("/");
     const res = await axios.post(url);
     var res_json = JSON.parse(res.data);
-    console.log(`inside post func for url - ${url} the body is: ${res_json["body"]}`);
+    console.log(`inside post func for url - ${url} the body is: ${res.data}`);
     if(res.status !== 200){
         throw Error(res.data["body"]["message"]);
     }
@@ -65,6 +65,10 @@ class ServerCommunicator{
 
   async loanBook(bookID, userID) {
     return await this.post("loan_book", bookID, userID);
+  }
+
+  async endLoan(bookID, userID) {
+    return await this.post("end_loan", bookID, userID);
   }
 }
 

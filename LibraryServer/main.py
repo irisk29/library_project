@@ -126,3 +126,17 @@ async def loanBook(bookID, userID):
     url = f"{api_gateway_endpoint}/{resource_name}"
     req = requests.post(url, headers=headers, data=json_data)
     return req.text
+
+
+@app.post("/end_loan/{bookID}/{userID}")
+async def endLoan(bookID, userID):
+    input_data = {
+        "bookID": bookID,
+        "userID": userID,
+    }
+    print(input_data)
+    json_data = json.dumps(input_data)
+    resource_name = "end_loan"
+    url = f"{api_gateway_endpoint}/{resource_name}"
+    req = requests.post(url, headers=headers, data=json_data)
+    return req.text
