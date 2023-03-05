@@ -10,6 +10,7 @@ function UserPreview(props)
 {
     const {id, userName, personalID} = props;
     var edit_path = "/edit_user/" + userName + "/" + personalID + "/" + id;
+    var get_user_books_path = "/user_books/" + id;
     function deletePopUp()
     {
         alert("User is deleted");
@@ -21,14 +22,14 @@ function UserPreview(props)
                 <h4>{userName}</h4>
                 <h6>{personalID}</h6>
                 <div style={{"display": "flex"}}>
-                    <Link to="/"> {/*TODO: create user's books view */}
+                    <Link to={get_user_books_path}> 
                         <Tooltip title="My Books">
                             <IconButton color="primary" aria-label="view books">
                                 <LibraryBooksIcon />
                             </IconButton>
                         </Tooltip>
                     </Link>
-                    <Link to={edit_path}> {/*TODO: create edit */}
+                    <Link to={edit_path}> 
                         <Tooltip title="Edit">
                             <IconButton color="primary" aria-label="edit user">
                                 <EditIcon />

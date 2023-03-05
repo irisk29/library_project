@@ -10,9 +10,9 @@ function BookPreview(props)
 {
     const vars = [props.bookName, props.author, props.numOfAvailableCopies, props.id];
     const edit_book_path = "/edit_book/" + vars.join("/");
-    
+
     return (
-        <Card class="card" key={props.id}  style={{"width": "18rem"}}>
+        <Card className="card" key={props.id}  style={{"width": "18rem"}}>
             <div>
                 <h4>{props.bookName}</h4>
                 <h6>Author: {props.author}</h6>

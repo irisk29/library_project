@@ -11,6 +11,12 @@ body {
   padding: 0 16px;
 }
 
+h2 {
+  margin-top: 2%;
+  margin-bottom: 1%;
+  margin-left: 0.5%;
+}
+
 header {
   background-color: #f5ba13;
   margin: auto -16px;

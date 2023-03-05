@@ -6,6 +6,7 @@ import EditUser from './EditUser';
 import Home from "./Home";
 import ManageBooks from './ManageBooks';
 import ManageUsers from "./ManageUsers";
+import MyBooks from './MyBooks';
 
 const Main = () => {
   return (
@@ -16,6 +17,7 @@ const Main = () => {
       <Route exact path='/add_new_user' element={<CreateUser/>}></Route>
       <Route exact path='/edit_user/:userName/:personalID/:userID' element={<EditUser/>}></Route>
       <Route exact path='/edit_book/:bookName/:author/:copies/:bookID' element={<EditBook/>}></Route>
+      <Route exact path='/user_books/:userID' element={<MyBooks/>}></Route>
     </Routes>
   );
 }

@@ -8,7 +8,10 @@ function ManageUsers() {
 
    useEffect( () =>{
       async function getUsers(){
-         var res = await new ServerCommunicator().getAllUsers().catch(() => "Something went wrong!");
+         var res = await new ServerCommunicator().getAllUsers().catch(() => {
+            console.log("Somthing went wrong!");
+            return [];
+         });
          console.log(res);
          setUsersInfo(res);
       }
