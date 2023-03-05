@@ -102,6 +102,19 @@ async def getUserBooks(userID):
     return req.text
 
 
+@app.get("/get_books_user_can_loan/{userID}")
+async def getBooksUserCanLoan(userID):
+    input_data = {
+        "userID": userID,
+    }
+    json_data = json.dumps(input_data)
+    resource_name = "get_books_user_can_loan"
+    url = f"{api_gateway_endpoint}/{resource_name}"
+    print(url)
+    req = requests.get(url, headers=headers, data=json_data)
+    return req.text
+
+
 @app.post("/loan_book/{bookID}/{userID}")
 async def loanBook(bookID, userID):
     input_data = {

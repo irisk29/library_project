@@ -7,7 +7,7 @@ import IconButton from '@mui/material/IconButton';
 function CurrentlyLoaningBookCard(props) {
     return (
         <Card className="card" key={props.bookID}  style={{"width": "18rem"}}>
-            <div style={{"float": "left", "width": "80%"}}>
+            <div style={{"float": "left", "width": "80%", "display": "table-column", "overflowWrap": "break-word", "borderBlock": "80%"}}>
                 <h4>{props.bookName}</h4>
                 <h6>Author: {props.author}</h6>
                 <h6>Available Copies: {props.copies}</h6>

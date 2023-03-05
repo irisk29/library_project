@@ -1,9 +1,9 @@
 import React, { useEffect, useState } from "react";
-import { Card } from "@mui/material";
+import { Card, Tooltip} from "@mui/material";
 import ServerCommunicator from "../ServerCommunicator";
-import SimpleHeader from "./SimpleHeader";
 import { useParams } from "react-router-dom";
 import CurrentlyLoaningBookCard from "./CurrentlyLoaningBookCard";
+import MyBooksHeader from "./MyBooksHeader";
 
 //the books I currently loaning and the books I read
 function MyBooks() {
@@ -26,7 +26,7 @@ function MyBooks() {
    
    return (
     <div>
-      <SimpleHeader title="My Books" />
+      <MyBooksHeader userID={userID}/>
       {
         <div>
             <div style={{"overflow": "auto", "whiteSpace": "nowrap"}}> 

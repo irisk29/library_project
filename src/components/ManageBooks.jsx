@@ -20,7 +20,7 @@ function ManageBooks() {
    return (
     <div>
       <BooksHeader />
-      {typeof booksInfo === 'string' ? booksInfo : <BooksView books={booksInfo} />}      
+      <BooksView books={booksInfo} />
     </div>
    )
 }

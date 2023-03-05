@@ -17,7 +17,7 @@ function UserPreview(props)
     }
 
     return (
-        <Card class="card" key={id}  style={{"width": "18rem"}}>
+        <Card className="card" key={id}  style={{"width": "18rem"}}>
             <div>
                 <h4>{userName}</h4>
                 <h6>{personalID}</h6>
