@@ -28,7 +28,7 @@ function LoanBook() {
                 booksCanLoan.map((b, index) => {
                     return (
                         <Grid item key={index}>
-                            <LoanBookCard userID={userID} bookName={b["BookName"]} author={b["Author"]} numOfAvailableCopies={b["Copies"]} bookID={b["BookID"]}/>
+                            <LoanBookCard userID={userID} bookName={b["BookName"]} author={b["Author"]} numOfAvailableCopies={b["Copies"]} bookID={b["ID"]}/>
                         </Grid>)
                 })
             }
