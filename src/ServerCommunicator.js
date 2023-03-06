@@ -34,6 +34,17 @@ class ServerCommunicator{
     return "ok";
   }
 
+  async delete(...params) {
+    var url = `http://localhost:8000/`;
+    url += params.join("/");
+    const res = await axios.delete(url);
+    console.log(`inside delete func for url - ${url} the body is: ${res.data}`);
+    if(res.status !== 200){
+        throw Error(res.data["body"]["message"]);
+    }
+    return "ok";
+  }
+
   async getAllBooks() {
       return await this.get("get_all_books");
   }
@@ -44,6 +55,10 @@ class ServerCommunicator{
 
   async getUserBooks(userID) {
     return await this.get("get_user_books", userID);
+  }
+
+  async getUserLoanedBooksID(userID) {
+    return await this.get("get_user_loaned_books", userID);
   }
 
   async getBooksUserCanLoan(userID) {
@@ -73,6 +88,11 @@ class ServerCommunicator{
   async endLoan(bookID, userID) {
     return await this.post("end_loan", bookID, userID);
   }
+
+  async deleteUser(userID) {
+    return await this.delete("delete_user", userID);
+  }
+  
 }
 
 export default ServerCommunicator;

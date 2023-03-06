@@ -145,3 +145,27 @@ async def getUsersWhoLoansTheBooks(bookID):
     url = f"{api_gateway_endpoint}/{resource_name}"
     req = requests.get(url, headers=headers, data=json_data)
     return req.text
+
+
+@app.get("/get_user_loaned_books/{userID}")
+async def getUsersWhoLoansTheBooks(userID):
+    input_data = {
+        "userID": userID,
+    }
+    json_data = json.dumps(input_data)
+    resource_name = "get_user_loaned_books"
+    url = f"{api_gateway_endpoint}/{resource_name}"
+    req = requests.get(url, headers=headers, data=json_data)
+    return req.text
+
+
+@app.delete("/delete_user/{userID}")
+async def deleteUser(userID):
+    input_data = {
+        "userID": userID,
+    }
+    json_data = json.dumps(input_data)
+    resource_name = "delete_user"
+    url = f"{api_gateway_endpoint}/{resource_name}"
+    req = requests.delete(url, headers=headers, data=json_data)
+    return req.text

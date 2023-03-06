@@ -5,15 +5,26 @@ import DeleteIcon from '@mui/icons-material/Delete';
 import EditIcon from '@mui/icons-material/Edit';
 import LibraryBooksIcon from '@mui/icons-material/LibraryBooks';
 import { Card, Tooltip } from "@mui/material";
+import ServerCommunicator from "../ServerCommunicator";
 
 function UserPreview(props)
 {
     const {id, userName, personalID} = props;
     var edit_path = "/edit_user/" + userName + "/" + personalID + "/" + id;
     var get_user_books_path = "/user_books/" + id;
-    function deletePopUp()
+    
+    async function deleteUser()
     {
-        alert("User is deleted");
+        var books = await new ServerCommunicator().getUserLoanedBooksID(id).catch(() => {
+            console.log("Somthing went wrong!");
+            return [];
+        });
+        await books.forEach(async b => {
+            await new ServerCommunicator().endLoan(b["bookID"], id);
+        });
+        await new ServerCommunicator().deleteUser(id).catch(() => {
+            console.log("Somthing went wrong!");
+        });
     }
 
     return (
@@ -36,9 +47,9 @@ function UserPreview(props)
                             </IconButton>
                         </Tooltip>
                     </Link>
-                    <Link to="/"> {/*TODO: create delete */}
+                    <Link to="/">
                         <Tooltip title="Delete">
-                            <IconButton color="primary" aria-label="delete user" onClick={deletePopUp}>
+                            <IconButton color="primary" aria-label="delete user" onClick={deleteUser}>
                                 <DeleteIcon />
                             </IconButton>
                         </Tooltip>
