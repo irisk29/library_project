@@ -1,5 +1,5 @@
 import React from "react";
-import { Card } from "@mui/material";
+import { Card, Grid } from "@mui/material";
 import { useLocation } from "react-router-dom";
 import SimpleHeader from "./SimpleHeader";
 import NoDataMsg from "./NoDataMsg";
@@ -10,30 +10,28 @@ function MyBooksHistory() {
     var booksHistory = books["state"];
 
     return (
-        <div style={{"flexFlow": "column", "display": "flex", "height": "100%"}}>
+        <div>
         <SimpleHeader title="My Books History"/>
         {
             booksHistory.length === 0 ? 
             <NoDataMsg msg="Your books history is empty - please read something :)"/> :
-            <div>
-                <ul style={{"overflow": "auto", "height": "400px"}}>
-                    {
-                        booksHistory.map((b) => {
-                            return (
-                                <li key={b["bookID"]} style={{"display": "inline-block"}}>
-                                    <Card className="card" style={{"width": "18rem", "display": "inline-block"}}>
-                                        <div>
-                                            <h4>{b["BookName"]}</h4>
-                                            <h6>Author: {b["Author"]}</h6>
-                                            <h6>Available Copies: {b["Copies"]}</h6>
-                                        </div>  
-                                    </Card>
-                                </li>
-                            )
-                        })
-                    }  
-                </ul>
-            </div>
+            <Grid container spacing={1}>
+                {
+                    booksHistory.map((b, index) => {
+                        return (
+                            <Grid item key={index}>
+                                <Card className="card" style={{"width": "18rem"}}>
+                                    <div>
+                                        <h4>{b["BookName"]}</h4>
+                                        <h6>Author: {b["Author"]}</h6>
+                                        <h6>Available Copies: {b["Copies"]}</h6>
+                                    </div>  
+                                </Card> 
+                            </Grid>
+                        )
+                    })
+                }
+            </Grid>
         }      
         </div>
     )

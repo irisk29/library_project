@@ -4,6 +4,7 @@ import { useParams } from "react-router-dom";
 import CurrentlyLoaningBookCard from "./CurrentlyLoaningBookCard";
 import MyBooksHeader from "./MyBooksHeader";
 import NoDataMsg from "./NoDataMsg";
+import { Grid } from "@mui/material";
 
 //the books I currently loaning and the books I read
 function MyBooks() {
@@ -25,24 +26,22 @@ function MyBooks() {
    var loanedBooks = userBooks.filter((b) => b["loans"]);
    
    return (
-    <div style={{"flexFlow": "column", "display": "flex", "height": "100%"}}>
+    <div>
       <MyBooksHeader userID={userID} books={booksHistory}/>
       {
         loanedBooks.length === 0 ? 
         <NoDataMsg msg="You have no loaned books"/> :
-        <div>
-            <ul style={{"overflow": "auto", "height": "400px"}}>
-                {   
-                    loanedBooks.map((loanedBook) => {
-                        return (
-                            <li style={{"display": "inline-block"}} key={loanedBook["bookID"]}>
-                                <CurrentlyLoaningBookCard userID={userID} bookID={loanedBook["bookID"]} bookName={loanedBook["BookName"]} author={loanedBook["Author"]} copies={loanedBook["Copies"]}/>
-                            </li>
-                        )
-                    })
-                }
-            </ul>
-        </div>
+        <Grid container spacing={1}>
+            {
+                loanedBooks.map((loanedBook, index) => {
+                    return (
+                        <Grid item key={index}>
+                            <CurrentlyLoaningBookCard userID={userID} bookID={loanedBook["bookID"]} bookName={loanedBook["BookName"]} author={loanedBook["Author"]} copies={loanedBook["Copies"]}/>
+                        </Grid>
+                    )
+                })
+            }
+        </Grid>
       }      
     </div>
    )
