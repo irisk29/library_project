@@ -2,6 +2,7 @@ import React from "react";
 import { Card } from "@mui/material";
 import { useLocation } from "react-router-dom";
 import SimpleHeader from "./SimpleHeader";
+import NoDataMsg from "./NoDataMsg";
 
 //the books I currently loaning and the books I read
 function MyBooksHistory() {
@@ -13,9 +14,7 @@ function MyBooksHistory() {
         <SimpleHeader title="My Books History"/>
         {
             booksHistory.length === 0 ? 
-            <div style={{"display": "flex", "alignItems": "center", "justifyContent": "center", "marginTop": "5rem"}}>
-                <p style={{"fontWeight": "800"}}>Your books history is empty - please read something :)</p>
-            </div> :
+            <NoDataMsg msg="Your books history is empty - please read something :)"/> :
             <div>
                 <ul style={{"overflow": "auto", "height": "400px"}}>
                     {

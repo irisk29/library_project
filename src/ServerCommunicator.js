@@ -69,6 +69,10 @@ class ServerCommunicator{
     return await this.get("get_book_loaners", bookID);
   }
 
+  async getUsersWhoCanLoanTheBook(bookID) {
+    return await this.get("get_poss_loaners", bookID);
+  }
+
   async createNewUser(userName, personalID) {
     return await this.post("create_user", userName, personalID);
   }

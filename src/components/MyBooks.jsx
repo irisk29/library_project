@@ -3,6 +3,7 @@ import ServerCommunicator from "../ServerCommunicator";
 import { useParams } from "react-router-dom";
 import CurrentlyLoaningBookCard from "./CurrentlyLoaningBookCard";
 import MyBooksHeader from "./MyBooksHeader";
+import NoDataMsg from "./NoDataMsg";
 
 //the books I currently loaning and the books I read
 function MyBooks() {
@@ -28,9 +29,7 @@ function MyBooks() {
       <MyBooksHeader userID={userID} books={booksHistory}/>
       {
         loanedBooks.length === 0 ? 
-        <div style={{"display": "flex", "alignItems": "center", "justifyContent": "center", "marginTop": "5rem"}}>
-            <p style={{"fontWeight": "800"}}>You have no loaned books</p>
-        </div> :
+        <NoDataMsg msg="You have no loaned books"/> :
         <div>
             <ul style={{"overflow": "auto", "height": "400px"}}>
                 {   

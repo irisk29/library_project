@@ -11,6 +11,8 @@ function BookPreview(props)
     const vars = [props.bookName, props.author, props.numOfAvailableCopies, props.id];
     const edit_book_path = "/edit_book/" + vars.join("/");
     const loaners_path = "/loaners/" + props.id;
+    const loan_book_path = "/poss_loaners/" + props.id;
+    var cannotNav = props.numOfAvailableCopies === 0;
 
     return (
         <Card className="card" key={props.id}  style={{"width": "18rem"}}>
@@ -33,9 +35,9 @@ function BookPreview(props)
                             </IconButton>
                         </Tooltip>
                     </Link>
-                    <Link to="/books"> {/*TODO: add loan book logic*/}
+                    <Link to={loan_book_path} style={cannotNav ? {"pointerEvents" : "none"} : null}> {/*TODO: add loan book logic*/}
                         <Tooltip title="Loan Book">
-                            <IconButton color="primary" aria-label="loan book">
+                            <IconButton color="primary" aria-label="loan book" disabled={cannotNav}>
                                 <AddCircleIcon />
                             </IconButton>
                         </Tooltip>
