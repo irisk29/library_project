@@ -9,11 +9,14 @@ function MyBooksHistory() {
     var booksHistory = books["state"];
 
     return (
-        <div>
+        <div style={{"flexFlow": "column", "display": "flex", "height": "100%"}}>
         <SimpleHeader title="My Books History"/>
         {
+            booksHistory.length === 0 ? 
+            <div style={{"display": "flex", "alignItems": "center", "justifyContent": "center", "marginTop": "5rem"}}>
+                <p style={{"fontWeight": "800"}}>Your books history is empty - please read something :)</p>
+            </div> :
             <div>
-                
                 <ul style={{"overflow": "auto", "height": "400px"}}>
                     {
                         booksHistory.map((b) => {

@@ -9,7 +9,7 @@ function MyBooks() {
     var {userID} = useParams();
     const [userBooks, setUserBooks] = useState([]);
 
-   useEffect( () =>{
+   useEffect( () => {
     async function getBooks(){
         var getUserBooks = await new ServerCommunicator().getUserBooks(userID).catch(() => {
             console.log("Somthing went wrong!");
@@ -24,12 +24,16 @@ function MyBooks() {
    var loanedBooks = userBooks.filter((b) => b["loans"]);
    
    return (
-    <div>
+    <div style={{"flexFlow": "column", "display": "flex", "height": "100%"}}>
       <MyBooksHeader userID={userID} books={booksHistory}/>
       {
+        loanedBooks.length === 0 ? 
+        <div style={{"display": "flex", "alignItems": "center", "justifyContent": "center", "marginTop": "5rem"}}>
+            <p style={{"fontWeight": "800"}}>You have no loaned books</p>
+        </div> :
         <div>
             <ul style={{"overflow": "auto", "height": "400px"}}>
-                {
+                {   
                     loanedBooks.map((loanedBook) => {
                         return (
                             <li style={{"display": "inline-block"}} key={loanedBook["bookID"]}>
