@@ -1,0 +1,8 @@
+{
+  "name": "pg_module",
+  "version": "1.0.0",
+  "dependencies": {
+    "aws-sdk": "^2.1320.0",
+    "pg": "^8.9.0"
+  }
+}
