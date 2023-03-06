@@ -8,6 +8,7 @@ import LoanBook from './LoanBook';
 import ManageBooks from './ManageBooks';
 import ManageUsers from "./ManageUsers";
 import MyBooks from './MyBooks';
+import MyBooksHistory from './MyBooksHistory';
 import BookLoaners from './WhoLoansTheBook';
 
 const Main = () => {
@@ -17,6 +18,7 @@ const Main = () => {
       <Route exact path='/books' element={<ManageBooks/>}></Route>
       <Route exact path='/users' element={<ManageUsers/>}></Route>
       <Route exact path='/add_new_user' element={<CreateUser/>}></Route>
+      <Route exact path='/books_history' element={<MyBooksHistory/>}></Route>
       <Route exact path='/edit_user/:userName/:personalID/:userID' element={<EditUser/>}></Route>
       <Route exact path='/edit_book/:bookName/:author/:copies/:bookID' element={<EditBook/>}></Route>
       <Route exact path='/user_books/:userID' element={<MyBooks/>}></Route>

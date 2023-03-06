@@ -1,5 +1,4 @@
 import React, { useEffect, useState } from "react";
-import { Card } from "@mui/material";
 import ServerCommunicator from "../ServerCommunicator";
 import { useParams } from "react-router-dom";
 import CurrentlyLoaningBookCard from "./CurrentlyLoaningBookCard";
@@ -26,34 +25,20 @@ function MyBooks() {
    
    return (
     <div>
-      <MyBooksHeader userID={userID}/>
+      <MyBooksHeader userID={userID} books={booksHistory}/>
       {
         <div>
-            <div style={{"overflow": "auto", "whiteSpace": "nowrap"}}> 
-                <h2>Currently Loaning:</h2>
+            <ul style={{"overflow": "auto", "height": "400px"}}>
                 {
                     loanedBooks.map((loanedBook) => {
-                        return <CurrentlyLoaningBookCard userID={userID} bookID={loanedBook["bookID"]} bookName={loanedBook["BookName"]} author={loanedBook["Author"]} copies={loanedBook["Copies"]}/>
+                        return (
+                            <li style={{"display": "inline-block"}} key={loanedBook["bookID"]}>
+                                <CurrentlyLoaningBookCard userID={userID} bookID={loanedBook["bookID"]} bookName={loanedBook["BookName"]} author={loanedBook["Author"]} copies={loanedBook["Copies"]}/>
+                            </li>
+                        )
                     })
                 }
-            </div>
-            <div>
-                <hr style={{"textAlign": "left", "marginLeft": "0", "border": "1px solid"}}/>
-            </div>
-            <div>
-                <h2>Books You Have Read:</h2>
-                {
-                    booksHistory.map((b) => {
-                        return <Card className="card" key={b["bookID"]}  style={{"width": "18rem"}}>
-                            <div>
-                                <h4>{b["BookName"]}</h4>
-                                <h6>Author: {b["Author"]}</h6>
-                                <h6>Available Copies: {b["Copies"]}</h6>
-                            </div>
-                        </Card>
-                    })
-                }  
-            </div>
+            </ul>
         </div>
       }      
     </div>
