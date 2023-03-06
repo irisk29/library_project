@@ -4,26 +4,32 @@ import ServerCommunicator from "../ServerCommunicator";
 import LoanBookCard from "./LoanBookCard";
 import { Grid } from "@mui/material";
 import SimpleHeader from "./SimpleHeader";
+import LoadingSpinner from "./LoadingSpinner";
+import NoDataMsg from "./NoDataMsg";
 
 function LoanBook() {
     var {userID} = useParams();
     const [booksCanLoan, setBooksCanLoan] = useState([]);
+    const [isLoading, setIsLoading] = useState(false);
 
     useEffect( () =>{
         async function getBooks(){
+            setIsLoading(true);
             var res = await new ServerCommunicator().getBooksUserCanLoan(userID).catch(() => {
                 console.log("Somthing went wrong!");
                 return [];
             });
             setBooksCanLoan(res);
+            setIsLoading(false);
         }
         getBooks();
     }, []);
 
-    return (
+    return isLoading ? <LoadingSpinner/> :
         <div>
         <SimpleHeader title="Loan A Book" />
-        <Grid container spacing={1}>
+        {booksCanLoan.length === 0 ? <NoDataMsg msg="Sorry all the books are taken - try again later"/> :
+         <Grid container spacing={1}>
             {
                 booksCanLoan.map((b, index) => {
                     return (
@@ -32,9 +38,9 @@ function LoanBook() {
                         </Grid>)
                 })
             }
-        </Grid>      
+        </Grid> }     
         </div>
-    );
+    
 }
 
 export default LoanBook;

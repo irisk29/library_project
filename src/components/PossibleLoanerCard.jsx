@@ -16,7 +16,7 @@ function PossibleLoanerCard(props) {
             <div>
                 <div style={{"float": "left", "width": "80%"}}>
                     <h4>{props.userName}</h4>
-                    <h6>Author: {props.personalID}</h6>
+                    <h6>Personal ID: {props.personalID}</h6>
                 </div>
                 <div style={{"display": "flex", "float": "right", "width": "20%", "justifyContent": "flex-end", "marginTop": "2%"}}>
                     <Link to="/users">
