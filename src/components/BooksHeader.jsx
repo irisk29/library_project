@@ -1,10 +1,17 @@
-import React from "react";
-import SimpleHeader from "./SimpleHeader";
+import React, { useState } from "react";
+import SearchBar from "./SearchBar";
+import HomeButton from "./ReturnToHomePageButton";
 
-function BooksHeader()
+function BooksHeader(props)
 {
     return (
-        <SimpleHeader title="Books Managment" />
+        <header>
+            <h1 style={{"display": 'inline-block'}}>Books Managment</h1>
+            <div style={{"textAlign": 'right', "position": "absolute", "top": "2vh", "right": "1vw"}}>
+                <SearchBar onChangeFunc={props.onChangeFunc} placeHolder="Search A Book"/>
+                <HomeButton/>
+            </div>
+        </header>
     );
 }
 

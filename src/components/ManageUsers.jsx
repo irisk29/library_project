@@ -5,6 +5,13 @@ import ServerCommunicator from "../ServerCommunicator";
 
 function ManageUsers() {
    const [usersInfo, setUsersInfo] = useState([]);
+   const [filteredUsers, setFilteredUsers] = useState([]);
+
+   const onSearch = (word) => {
+      var filteredUsers = usersInfo.filter((u) => u["userName"].toLowerCase().includes(word.toLowerCase())
+                                                      || u["personalID"].toLowerCase().includes(word.toLowerCase()));
+      setFilteredUsers(filteredUsers);                                                
+   };
 
    useEffect( () =>{
       async function getUsers(){
@@ -13,14 +20,15 @@ function ManageUsers() {
             return [];
          });
          setUsersInfo(res);
+         setFilteredUsers(res);
       }
       getUsers();
    }, []);
 
    return (
     <div>
-      <UsersHeader />
-      <UsersView users={usersInfo} />
+      <UsersHeader onChangeFunc={onSearch}/>
+      <UsersView users={filteredUsers} />
     </div>
    )
 }

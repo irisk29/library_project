@@ -1,10 +1,10 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import HomeIcon from '@mui/icons-material/Home';
 import AddBoxIcon from '@mui/icons-material/AddBox';
 import IconButton from '@mui/material/IconButton';
 import { Tooltip } from "@mui/material";
 import HistoryIcon from '@mui/icons-material/History';
+import HomeButton from "./ReturnToHomePageButton";
 
 function MyBooksHeader(props)
 {
@@ -28,13 +28,7 @@ function MyBooksHeader(props)
                         </IconButton>
                     </Tooltip>
                 </Link>
-                <Link to="/">
-                    <Tooltip title="Home">
-                        <IconButton color="primary" size="large" aria-label="go back home">
-                            <HomeIcon />
-                        </IconButton>
-                    </Tooltip>
-                </Link>
+                <HomeButton/>
             </div>
         </header>
     );
